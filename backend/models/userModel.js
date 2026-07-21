@@ -42,10 +42,20 @@ function buscarPorEmail(email, callback) {
 
     db.query(sql, [email], callback);
 }
+function buscarPorId(id, callback) {
+    const sql = `
+        SELECT id, nome, email, telefone, cpf, cidade, bairro, endereco, foto_perfil
+        FROM usuarios
+        WHERE id = ?
+    `;
+
+    db.query(sql, [id], callback);
+}
 
 
 module.exports = {
     criarUsuario,
     buscarPorEmailOuCpf,
-    buscarPorEmail
+    buscarPorEmail,
+    buscarPorId
 };
